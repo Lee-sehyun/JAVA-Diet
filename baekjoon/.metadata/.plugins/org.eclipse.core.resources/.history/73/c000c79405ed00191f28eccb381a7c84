@@ -1,0 +1,62 @@
+package 지뢰찾기;
+
+import java.util.Scanner;
+
+public class Main {
+	
+	public static int Count_L(int[][] array, int a, int b) {
+		
+		int count = 0;
+		
+		for (int i = a-1 ; i <= a+1 ; i++) {
+			for (int j = b-1 ; j <= b+1 ; j++) {
+				if (array[i][j] == '*') {
+					count++;
+				}
+			}
+		}
+		
+		return count;
+	}
+	
+	public static int[] Up_XorY(int[] array, int t) {
+		int i = 0;
+		
+		int[] array_2 = new int[array.length+1];
+		
+		for(i = 0 ; i < array.length ; i++) {
+			array_2[i] = array[i];
+		}
+		array_2[i+1] = t;
+		
+		return array_2;
+	}
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int[] array_x = new int[0];
+		int[] array_y = new int[0];
+		int x, y;
+		
+		while(true) {
+			x = sc.nextInt();
+			y = sc.nextInt();
+			
+			if(x == 0 && y == 0) {
+				break;
+			}
+			array_x = Up_XorY(array_x, x);
+			array_y = Up_XorY(array_y, y);
+		}
+		System.out.println(array_x);
+		System.out.println(array_y);
+		
+//		int[][] find = new int[x][y];
+		
+
+
+	}
+
+}
